@@ -55,6 +55,7 @@ def main():
     ap.add_argument('-p', '--processes', type = int, choices = range(1,256), metavar = '[1-256]', default = 10, help = "Number of upload processes to run simultaneously")
     args = vars(ap.parse_args()) # Returns Dictionary Attributes
     
+    # If key is not given, then consider the file name
     if args['key'] in [None, '']:
         args['key'] = args['file']
 
@@ -73,20 +74,23 @@ def main():
     part_num = 1
     chunk = file_upload.read(chunk_size)
     
+    # Create each process which uploads file by chunk size 
     while len(chunk) > 0:
         proc = multiprocessing.Process(target=add_part, args=(proc_queue, chunk, bucket, key, part_num, upload_id))
         part_procs.append(proc)
         part_num += 1
         chunk = file_upload.read(chunk_size)
 
-    part_procs = [part_procs[i * sim_proc:(i +1) * sim_proc] for i in range((len(part_procs) + (sim_proc - 1)) // sim_proc)]
+    # Convert number of partial processes into batches of simultaneous processes
+    num_batches = (len(part_procs) + (sim_proc - 1)) // sim_proc
+    part_procs = [part_procs[i * sim_proc:(i +1) * sim_proc] for i in range(num_batches)]
 
     for i in range(len(part_procs)):
         for p in part_procs[i]:
-            p.start()   
+            p.start() # Starting all the processes
 
         for p in part_procs[i]:
-            p.join()
+            p.join() # Waiting until all the processes complete
 
         for p in part_procs[i]:
             queue_returns.append(proc_queue.get())
