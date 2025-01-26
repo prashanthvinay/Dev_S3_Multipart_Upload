@@ -1,1 +1,1 @@
-# Dev_S3_Multipart_Upload
+In this repository, you can find the script to perform S3 multipart upload for larger files.
