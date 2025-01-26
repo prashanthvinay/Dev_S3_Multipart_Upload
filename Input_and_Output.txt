@@ -1,0 +1,47 @@
+# Input command to initiate the multipart upload
+python s3_multipart_upload.py -f <file-name> -b <s3-bucket-name> -cs <chunk-size-in-mb>
+Example: python s3_multipart_upload.py -f godfather.mp4 -b vps3multipartupload -cs 20
+
+
+# Output
+Starting upload: _gfm_KzLCtuIFuYutobdF0morrY7a6zBHne_Sz83IYViRkR4DNvCa9SZe2KlJVUMYNoQeCDpm2bxPrxxR9N40bkUFayTP0BARBpuT9iezMmlq47dFXLBdznPGzOKy3t4
+Finished Part: 2, ETag: "c14045e3f552373aa0fd8f642d671ba5"
+Finished Part: 5, ETag: "73d2ad858a8b7ec9b1234703847f3071"
+Finished Part: 3, ETag: "68785238ee7997d9d7806276897b4af4"
+Finished Part: 6, ETag: "2b9f8dc5465fe39d94075ce9b1ff683b"
+Finished Part: 7, ETag: "1ff36564ffac679eb048b4911cd1fe64"
+Finished Part: 8, ETag: "ae8d24c9978cc1876c4789debbae5bdf"
+Finished Part: 4, ETag: "e920ea97d40f0209d12cfc09c9ad5475"
+Finished Part: 1, ETag: "038eae75f7f2c4fad7f4434fcf457e57"
+Finished Part: 10, ETag: "74ddabbdf806df254c9a377f5a54649d"
+Finished Part: 9, ETag: "823f2676bf5e25558a145ea60b008341"
+Finished Part: 18, ETag: "16abbc864459c4885afee3f83e76cc4d"
+Finished Part: 15, ETag: "daae700858c83fe4f611535d307579a4"
+Finished Part: 14, ETag: "2ba06024365610e0a7c9b84f88906de2"
+Finished Part: 11, ETag: "d20054606f646ca9bb32369c7fcec0d3"
+Finished Part: 13, ETag: "0c87b4ffa93b6e754a4ff7508ebb55d5"
+Finished Part: 16, ETag: "bb9d795d60e5049b827b6c25afb6f494"
+Finished Part: 17, ETag: "d281c9a26118038d1c4578a23e501806"
+Finished Part: 12, ETag: "199d78ed76e2034f42cd946584c5cdaa"
+{
+    "Bucket": "vps3multipartupload",
+    "ETag": "\"50684efb3cc689b39c4bbd86f85b8ba2-18\"",
+    "Key": "godfather.mp4",
+    "Location": "https://vps3multipartupload.s3.amazonaws.com/godfather.mp4",
+    "ResponseMetadata": {
+        "HTTPHeaders": {
+            "content-type": "application/xml",
+            "date": "Sun, 26 Jan 2025 14:37:19 GMT",
+            "server": "AmazonS3",
+            "transfer-encoding": "chunked",
+            "x-amz-id-2": "mBTm6YHvJjMJALaXb9uGipDrwv+QYHHZEtV5B7GgcY37HxtpM8/n30ohdFFjp1DRAoQEs14DCZTvhDfxaX1dDA==",
+            "x-amz-request-id": "A4QNJXV1GFRCVGJ0",
+            "x-amz-server-side-encryption": "AES256"
+        },
+        "HTTPStatusCode": 200,
+        "HostId": "mBTm6YHvJjMJALaXb9uGipDrwv+QYHHZEtV5B7GgcY37HxtpM8/n30ohdFFjp1DRAoQEs14DCZTvhDfxaX1dDA==",
+        "RequestId": "A4QNJXV1GFRCVGJ0",
+        "RetryAttempts": 0
+    },
+    "ServerSideEncryption": "AES256"
+}
